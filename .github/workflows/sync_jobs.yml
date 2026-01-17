@@ -2,9 +2,8 @@ name: Sync Automation
 
 on:
   schedule:
-    # দিনে দুইবার রান করার জন্য (UTC সময় অনুযায়ী সকাল ৬টা এবং সন্ধ্যা ৬টা)
-    - cron: '0 0,12 * * *'
-  workflow_dispatch: # ম্যানুয়ালি রান করার অপশন
+    - cron: '0 2,14 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
