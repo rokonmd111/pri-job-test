@@ -200,7 +200,7 @@ def fetch_job_list_from_page(session: requests.Session, page_num: int) -> List[D
         return []
 
 def fetch_all_target_jobs() -> Dict[str, Dict[str, Any]]:
-    print("\n▶️ ধাপ ২: Bdjobs API থেকে সমস্ত তালিকা সংগ্রহ শুরু...")
+    print("\n▶️ ধাপ ২: API থেকে সমস্ত তালিকা সংগ্রহ শুরু...")
     all_jobs: Dict[str, Dict[str, Any]] = {}
     session = requests.Session()
     time.sleep(2)
@@ -406,7 +406,7 @@ def perform_deletion(service: Any, blog_id: str, blogger_posts: Dict[str, Dict[s
             except Exception as e:
                 print(f"       ❌ ডিলিট ব্যর্থ হয়েছে: পোস্ট ID {post_id}. ত্রুটি: {e}")
     else:
-        print("   ✅ Bdjobs এর কোনো মেয়াদ উত্তীর্ণ পোস্ট ডিলিট করার মতো পাওয়া যায়নি।")
+        print("   ✅ jobs এর কোনো মেয়াদ উত্তীর্ণ পোস্ট ডিলিট করার মতো পাওয়া যায়নি।")
         
 def perform_addition(service: Any, blog_id: str, target_posts: Dict[str, Dict[str, str]], blogger_posts: Dict[str, Dict[str, str]]):
     print("\n▶️ ধাপ ৫: নতুন পোস্ট প্রকাশের লজিক শুরু...")
@@ -506,7 +506,7 @@ def perform_addition(service: Any, blog_id: str, target_posts: Dict[str, Dict[st
 
 def run_synchronization():
     """সিঙ্ক্রোনাইজেশন প্রক্রিয়া শুরু করে (আগে ডিলিট, পরে অ্যাডিশন)।"""
-    print("--- Bdjobs Private Job Sync স্ক্রিপ্ট শুরু ---")
+    print("--- Private Job Sync স্ক্রিপ্ট শুরু ---")
     
     blogger_service = get_blogger_service()
     if not blogger_service:
@@ -519,12 +519,12 @@ def run_synchronization():
     
     if not target_posts:
         print("❌ টার্গেট সাইট থেকে কোনো বৈধ পোস্ট ডেটা পাওয়া যায়নি। সিঙ্ক্রোনাইজেশন বাতিল করা হলো।")
-        print("\n--- Bdjobs Private Job Sync স্ক্রিপ্ট সমাপ্ত ---")
+        print("\n--- Private Job Sync স্ক্রিপ্ট সমাপ্ত ---")
         return
         
     perform_addition(blogger_service, BLOG_ID, target_posts, blogger_posts)
     
-    print("\n--- Bdjobs Private Job Sync স্ক্রিপ্ট সমাপ্ত ---")
+    print("\n--- Private Job Sync স্ক্রিপ্ট সমাপ্ত ---")
 
 
 if __name__ == '__main__':
