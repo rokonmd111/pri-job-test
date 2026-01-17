@@ -1,0 +1,31 @@
+name: Bdjobs Sync Automation
+
+on:
+  schedule:
+    # দিনে দুইবার রান করার জন্য (UTC সময় অনুযায়ী সকাল ৬টা এবং সন্ধ্যা ৬টা)
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # ম্যানুয়ালি রান করার অপশন
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-code: '3.9'
+
+    - name: Install Dependencies
+      run: |
+        pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client requests
+
+    - name: Run Script
+      env:
+        # গিটহাব সিক্রেটকে এনভায়রনমেন্ট ভেরিয়েবলে পাস করা
+        CLIENT_SECRET_JSON: ${{ secrets.CLIENT_SECRET_JSON }}
+        BLOGGER_TOKEN_JSON: ${{ secrets.BLOGGER_TOKEN_JSON }}
+      run: python your_script_name.py
