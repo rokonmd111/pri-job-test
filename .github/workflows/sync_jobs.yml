@@ -2,7 +2,7 @@ name: Sync Automation
 
 on:
   schedule:
-    - cron: '0 1,11 * * *'
+    - cron: '12 1,11 * * *'
   workflow_dispatch:
 
 jobs:
