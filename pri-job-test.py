@@ -197,6 +197,17 @@ def fetch_job_list_from_page(session: requests.Session, page_num: int) -> List[D
             print(f"       - Page {page_num}: শেষ পেজে পৌঁছেছে বা Invalid Page।")
         else:
             print(f"       ❌ API লিস্ট ফেচ ব্যর্থ (Page {page_num}): {e}")
+
+    # এখানে এরর মেসেজ আরও বিস্তারিত করুন
+    if response.status_code != 200:
+        print(f"       ❌ HTTP Error: {response.status_code} on Page {page_num}")
+        print(f"       🔗 Requested URL snippet: {api_url[:30]}...{api_url[-10:]}") # URL এর অংশ চেক করা
+        
+        if response.status_code in (400, 404):
+            print(f"       - সর্তকবার্তা: সার্ভার এই রিকোয়েস্টটি খুঁজে পাচ্ছে না বা রিজেক্ট করছে।")
+            # রেসপন্স বডিতে কোনো মেসেজ আছে কিনা দেখুন (এটিই আসল কারণ বলবে)
+            print(f"       - Server Response Body: {response.text[:200]}") 
+    # ... বাকি কোড
         return []
 
 def fetch_all_target_jobs() -> Dict[str, Dict[str, Any]]:
