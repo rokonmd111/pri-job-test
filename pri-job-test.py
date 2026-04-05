@@ -40,9 +40,15 @@ END_DATE_LABEL_PREFIX = "BdEndDate:"
 API_DATE_FORMATS = ['%Y-%m-%dT%H:%M:%SZ', '%m/%d/%Y %H:%M:%S']
 
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
     'Accept': 'application/json, text/plain, */*',
-    'Host': 'gateway.bdjobs.com',
+    'Accept-Language': 'en-US,en;q=0.9,bn;q=0.8',
+    'Connection': 'keep-alive',
+    'Cache-Control': 'max-age=0',
+    'Sec-Ch-Ua': '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+    'Sec-Ch-Ua-Mobile': '?0',
+    'Sec-Ch-Ua-Platform': '"Windows"',
+    'Origin': 'https://www.bdjobs.com',
     'Referer': 'https://www.bdjobs.com/',
 }
 
